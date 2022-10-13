@@ -1,4 +1,4 @@
-package uebung02_wuerfelBecker.wuerfelBecker;
+package de.kozdemir.uebung02_wuerfelBecker.wuerfelBecker;
 
 import java.util.Random;
 import java.util.Scanner;

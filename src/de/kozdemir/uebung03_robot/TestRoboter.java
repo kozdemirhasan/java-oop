@@ -1,4 +1,4 @@
-package uebung03_robot;
+package de.kozdemir.uebung03_robot;
 
 import java.util.Scanner;
 

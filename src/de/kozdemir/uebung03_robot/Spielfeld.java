@@ -1,4 +1,4 @@
-package uebung03_robot;
+package de.kozdemir.uebung03_robot;
 
 public class Spielfeld {
 

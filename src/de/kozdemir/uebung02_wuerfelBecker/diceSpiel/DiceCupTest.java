@@ -1,4 +1,4 @@
-package uebung02_wuerfelBecker.diceSpiel;
+package de.kozdemir.uebung02_wuerfelBecker.diceSpiel;
 
 
 public class DiceCupTest {
