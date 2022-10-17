@@ -36,18 +36,13 @@ public class ProductManager {
 		System.out.println(
 				"---------------------------------------------------------------------------------------------------");
 
-		try {
-			for (Product product : products) {
-				System.out.printf("%5s | %-15s | %-25s | %-30s | %-30s | %.2f EUR \n", product.getId(), product.getName(),
-						product.getDescription(), ((VerderblichesProduct) product).getVerfallsDatum(),
-						product.getCreatedAt(), product.getPrice());
+		for (Product product : products) {
+			System.out.printf("%5s | %-15s | %-25s | %-30s | %-30s | %.2f EUR \n", product.getId(), product.getName(),
+					product.getDescription(), ((VerderblichesProduct) product).getVerfallsDatum(),
+					product.getCreatedAt(), product.getPrice());
 
-			}
-
-		}catch(Exception ex){
-			System.out.println("Fehler!!!");
 		}
-	
+
 	}
 
 }

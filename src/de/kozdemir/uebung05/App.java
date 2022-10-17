@@ -39,6 +39,7 @@ public class App {
 		Product product;
 
 		while (true) {
+			int wahl = menu();
 
 			System.out.print("Normales (N) oder VerdeblichesProduckt (V): ");
 			if (scanner.next().trim().equalsIgnoreCase("n"))
@@ -83,6 +84,23 @@ public class App {
 			productManager.listVerdeblishesProducts();
 		else
 			System.exit(0);
+
+	}
+
+	private static int menu() {
+
+		System.out.println( "****************************************\n" +
+							"*               MENU                   *\n" +
+							"****************************************\n" +
+							"*  N: Normales Product erstellen       *\n" +
+							"*  V: Verdebliches Product erstellen   *\n" +
+							"*  L: Product list                     *\n" +
+							"*  X: Verdebliches PRoduct list        *\n" +
+							"*  Q: Exit                             *\n" +
+							"*                                      *\n" +
+							"****************************************\n");
+
+		return 1;/////
 
 	}
 
