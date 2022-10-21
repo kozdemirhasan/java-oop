@@ -3,56 +3,63 @@ package de.kozdemir.uebung07;
 import java.util.Random;
 import java.util.Scanner;
 
+
+
 public class Spiel {
 
 	final private static Scanner scanner = new Scanner(System.in);
 	private String[][] eingabeList;
 	private String[][] randomZellen;
 
+	private Spielbrett spielbrett;
+	private int spielZahl = 1;
+	private int gefunden;
+
 	private static final int X_CAPACITY = 10;
 	private static final int Y_CAPACITY = 10;
-
-	private Spielbrett spielbrett;
+	private static final int VERMUTUNG_ZAHL = 3;
+	
 
 	public Spiel() {
 		eingabeList = new String[10][10]; // 10 defa tahmin edecek
 		randomZellen = new String[10][10]; // 10 alana random atama yapildi
 
 		spielbrett = new Spielbrett(X_CAPACITY, Y_CAPACITY);
-	
+
 		spielEinbau();
 		eingabe();
 
 	}
 
 	public void eingabe() {
+	
+		try {
 
-		// 10 mal versuchen
-		for (int count = 1; count <= 10; count++) {
+			// 10 mal versuchen
+			while (spielZahl <= VERMUTUNG_ZAHL) {
+				System.out.print("[Schätzung: " + spielZahl + "] ");
 
-			System.out.println("Count: " + count);
+				System.out.print("Koordinat (x,y): ");
+				String[] koordinat = scanner.nextLine().trim().split(",");
 
-			System.out.print("Koordinat (x,y): ");
-			String[] koordinat = scanner.nextLine().trim().split(",");
+				int x = 0;
+				int y = 0;
 
-			int x = 0;
-			int y = 0;
-
-//			try {
 				x = Integer.parseInt(koordinat[0]); // first String to int
 				y = Integer.parseInt(koordinat[1]); // second String to int
 
 				if ((x >= 1 && x <= 10) && (y >= 0 && y <= 11)) {
 					if (controllEintritt((x - 1), (y - 1))) {
-						System.out.println("(" + x + "," + y + ") daha önce girildi!");
+						System.out.println("(" + x + "," + y + ") wurde schon eingegeben!");
 						eingabe();
 
 					} else {
-
-						if (!vermutungControll(x, y)) {
-							eingabeList[x][y] = "-";
+						spielZahl++;
+						if (!vermutungControll(x - 1, y - 1)) {
+							eingabeList[x - 1][y - 1] = "-";
 						} else {
-							eingabeList[x][y] = "X";
+							eingabeList[x - 1][y - 1] = "X";
+							gefunden++;
 						}
 						spielbrett.brettFuellen(eingabeList);
 					}
@@ -60,15 +67,32 @@ public class Spiel {
 				} else {
 					System.out.println("Ungultige Koordinat!");
 				}
-//
-//			} catch (Exception ex) {
-//				System.out.println("Ungultige eingabe!");
-//
-//			}
+			}
 			
-			
-		}
+			//info nach dem  Spiel
+			if(gefunden>0)
+			System.out.println(gefunden + " richtige Vermutungen");
+			else
+				System.out.println("Leider, keine richtige Vermutung");
+		
 
+		} catch (Exception ex) {
+			System.out.println("Ungultige eingabe!\n");
+			eingabe();
+
+		}
+		
+//		//Wieder spiel oder nict?
+//		System.out.println("Möchtest du wieder spielen? (Spiel: S, Quit: Q)");
+//		String s=scanner.next();
+//		if(s.equals("S") || s.equals("s") ){
+//			Spiel sp = new Spiel();
+//			
+//		}else if(s.equals("Q") || s.equals("q") ){ 
+//			System.out.println("Spiel ende...");
+//			System.exit(0);
+//		}
+		
 	}
 
 	public boolean controllEintritt(int x, int y) {
@@ -109,3 +133,4 @@ public class Spiel {
 	}
 
 }
+
