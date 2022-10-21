@@ -7,7 +7,7 @@ public class App {
 	public static void main(String[] args) {
 		
 		//spilebrett größe und Schätzunzahl 
-		Spiel sp = new Spiel(10,3);
+		Spiel sp = new Spiel(5,5);
 		sp.run();
 		
 	}

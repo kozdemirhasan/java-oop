@@ -10,7 +10,7 @@ public class Spiel {
 	private String[][] randomZellen;
 
 	private Spielbrett spielbrett;
-	private int spielZahl = 1;
+	private int spielZahl;
 	private int gefunden;
 
 	private final int CAPACITY;
@@ -21,23 +21,26 @@ public class Spiel {
 		CAPACITY = capacity;
 		VERMUTUNG_ZAHL = verzug;
 
-		eingabeList = new String[CAPACITY][CAPACITY];
-		randomZellen = new String[CAPACITY][CAPACITY];
-		spielbrett = new Spielbrett(CAPACITY, CAPACITY);
+		
 
 	}
 	
 
 	public void run() {
+		eingabeList = new String[CAPACITY][CAPACITY];
+		randomZellen = new String[CAPACITY][CAPACITY];
+		spielbrett = new Spielbrett(CAPACITY, CAPACITY);
+		
+		 spielZahl = 1;
+		
 		spielEinbau();
 		eingabe();
 	}
 
 	public void eingabe() {
 
-//		try {
-
-			// 10 mal versuchen
+		try {
+			
 			while (spielZahl <= VERMUTUNG_ZAHL) {
 				System.out.print("[Schätzung: " + spielZahl +"/"+ VERMUTUNG_ZAHL+"] ");
 
@@ -77,22 +80,22 @@ public class Spiel {
 			else
 				System.out.println("Leider, keine richtige Vermutung");
 
-//		} catch (Exception ex) {
-//			System.out.println("Ungultige eingabe!\n");
-//			eingabe();
-//
-//		}
+		} catch (Exception ex) {
+			System.out.println("Ungultige eingabe!\n");
+			eingabe();
 
-//		//Wieder spiel oder nict?
-//		System.out.println("Möchtest du wieder spielen? (Spiel: S, Quit: Q)");
-//		String s=scanner.next();
-//		if(s.equals("S") || s.equals("s") ){
-//			Spiel sp = new Spiel();
-//			
-//		}else if(s.equals("Q") || s.equals("q") ){ 
-//			System.out.println("Spiel ende...");
-//			System.exit(0);
-//		}
+		}
+
+		//Wieder spiel oder nict?
+		System.out.println("Möchtest du wieder spielen? (Spiel: S, Quit: Q)");
+		String s=scanner.next();
+		if(s.equals("S") || s.equals("s") ){
+			run();
+			
+		}else if(s.equals("Q") || s.equals("q") ){ 
+			System.out.println("Spiel ende...");
+			System.exit(0);
+		}
 
 	}
 
