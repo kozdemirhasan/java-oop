@@ -5,7 +5,10 @@ package de.kozdemir.uebung07;
 public class App {
 
 	public static void main(String[] args) {
-		Spiel sp = new Spiel();
+		
+		//spilebrett größe und Schätzunzahl 
+		Spiel sp = new Spiel(10,3);
+		sp.run();
 		
 	}
 
