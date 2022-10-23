@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Spiel {
 
-	final private static Scanner scanner = new Scanner(System.in);
+	private Scanner scanner;
 	private String[][] eingabeList;
 	private String[][] randomZellen;
 
@@ -17,35 +17,35 @@ public class Spiel {
 	private final int VERMUTUNG_ZAHL;
 
 	public Spiel(int capacity, int verzug) {
-		
+
 		CAPACITY = capacity;
 		VERMUTUNG_ZAHL = verzug;
 
-		
-
 	}
-	
 
 	public void run() {
 		eingabeList = new String[CAPACITY][CAPACITY];
 		randomZellen = new String[CAPACITY][CAPACITY];
 		spielbrett = new Spielbrett(CAPACITY, CAPACITY);
-		
-		 spielZahl = 1;
-		
+		scanner = new Scanner(System.in);
+		spielZahl = 1;
+		gefunden = 0;
+
 		spielEinbau();
 		eingabe();
+
 	}
 
 	public void eingabe() {
 
 		try {
-			
-			while (spielZahl <= VERMUTUNG_ZAHL) {
-				System.out.print("[Schätzung: " + spielZahl +"/"+ VERMUTUNG_ZAHL+"] ");
 
-				System.out.print("Pos: (x,y): ");
-				String[] koordinat = scanner.nextLine().trim().split(",");
+			while (spielZahl <= VERMUTUNG_ZAHL) {
+				System.out.print("[Spielbrett: " + CAPACITY +"x" +CAPACITY+" ]\n"
+							   + "[Schätzung : " + spielZahl + "/" + VERMUTUNG_ZAHL + " ]\n");
+
+				System.out.print("Pos (x,y) : ");
+				String[] koordinat = scanner.next().trim().split(",");
 
 				int x = 0;
 				int y = 0;
@@ -86,14 +86,14 @@ public class Spiel {
 
 		}
 
-		//Wieder spiel oder nict?
-		System.out.println("Möchtest du wieder spielen? (Spiel: S, Quit: Q)");
-		String s=scanner.next();
-		if(s.equals("S") || s.equals("s") ){
+		// Wieder spiel oder nict?
+		System.out.print("Möchtest du wieder spielen? (Spiel: S, Quit: Q)");
+		String s = scanner.next();
+		if (s.equalsIgnoreCase("s")) {
 			run();
-			
-		}else if(s.equals("Q") || s.equals("q") ){ 
-			System.out.println("Spiel ende...");
+
+		} else if (s.equalsIgnoreCase("Q")) {
+			System.out.println("Das Spiel wurde beendet!");
 			System.exit(0);
 		}
 
@@ -128,12 +128,26 @@ public class Spiel {
 	public void spielEinbau() {
 		// Random Coordinat werden erzeugt
 		Random r = new Random();
-		for (int i = 0; i < 10; i++) {
+		for (int i = 0; i < 10; i++) {  //10 random wert
 			int x = r.nextInt(CAPACITY);
 			int y = r.nextInt(CAPACITY);
-			randomZellen[x][y] = "?";
+			if (randomZellen[x][y] == null)
+				randomZellen[x][y] = "?";
+			else
+				i--;
 		}
 
+		//random wert print
+		for (int i = 0; i < randomZellen.length; i++) {
+			for (int j = 0; j < randomZellen[i].length; j++) {
+				if (randomZellen[i][j] != null) {
+					System.out.print("(" + (i+1) + "," + (j+1) + ") ");
+				}
+			}
+			System.out.println();
+		}
+
+		
 	}
 
 }

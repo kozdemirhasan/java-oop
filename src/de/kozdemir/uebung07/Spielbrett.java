@@ -1,5 +1,6 @@
 package de.kozdemir.uebung07;
 
+
 public class Spielbrett {
 
 	private String[][] feld;
@@ -17,7 +18,7 @@ public class Spielbrett {
 
 				if (eingabeList[x][y] != null) {
 
-					if (eingabeList[x] [y].equals("X")) {
+					if (eingabeList[x][y].equals("X")) {
 						feld[x][y] = "  X  ";
 					} else if (eingabeList[x][y].equals("-")) {
 						feld[x][y] = "  O  ";
@@ -30,18 +31,17 @@ public class Spielbrett {
 		}
 
 		System.out.print("   ");
-		
-		for(int i=1; i<=feld.length; i++) {
-			if(i<10) {
-				System.out.print("  X"+i+" ");
+
+		for (int i = 1; i <= feld.length; i++) {
+			if (i < 10) {
+				System.out.print("  X" + i + " ");
+			} else {
+				System.out.print("  X" + i);
 			}
-			else {
-				System.out.print("  X"+i);
-			}
-			
+
 		}
 		System.out.println();
-		
+
 		for (int y = 0; y < feld.length; y++) {
 
 			if (y > 8)
@@ -55,7 +55,9 @@ public class Spielbrett {
 			System.out.println("\n");
 		}
 		System.out.println();
-
+		
+	
 	}
+	
 
 }
