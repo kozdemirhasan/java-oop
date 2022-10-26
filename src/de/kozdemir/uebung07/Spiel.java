@@ -137,15 +137,15 @@ public class Spiel {
 				i--;
 		}
 
-		//random wert print
-		for (int i = 0; i < randomZellen.length; i++) {
-			for (int j = 0; j < randomZellen[i].length; j++) {
-				if (randomZellen[i][j] != null) {
-					System.out.print("(" + (i+1) + "," + (j+1) + ") ");
-				}
-			}
-			System.out.println();
-		}
+//		//random wert print
+//		for (int i = 0; i < randomZellen.length; i++) {
+//			for (int j = 0; j < randomZellen[i].length; j++) {
+//				if (randomZellen[i][j] != null) {
+//					System.out.print("(" + (i+1) + "," + (j+1) + ") ");
+//				}
+//			}
+//			System.out.println();
+//		}
 
 		
 	}

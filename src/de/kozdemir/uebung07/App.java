@@ -9,6 +9,6 @@ public class App {
 		Spiel sp = new Spiel(10,5);
 		sp.run();
 		
-	}
+ 	}
 
 }
