@@ -2,25 +2,15 @@ package de.kozdemir.uebung09_todolist;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
 import java.util.TreeSet;
-
-import de.kozdemir.inputOutputStream.Thing;
 
 public class TodoManager {
 
@@ -32,11 +22,14 @@ public class TodoManager {
 
 	private final Scanner scanner = new Scanner(System.in);
 
-	public TodoManager(String benutzerName) {
-		this.benutzerName = benutzerName;
-
+//	public TodoManager(String benutzerName) {
+//		this.benutzerName = benutzerName;
+//
+//		readFromFile();
+//
+//	}
+	public TodoManager() {
 		readFromFile();
-
 
 	}
 
@@ -78,10 +71,11 @@ public class TodoManager {
 
 				break;
 			case 4:
-				// ***
+				System.out.println("derzeit im Bau...");
 				break;
 
 			case 5:
+				System.out.println("Programmende...");
 				System.exit(0);
 				break;
 
@@ -121,7 +115,7 @@ public class TodoManager {
 		LocalDateTime erzeugungsDatum = LocalDateTime.now();
 		todo.setErzeugungsDate(erzeugungsDatum);
 
-		todo.setStatus(false); // false = nicht erledigen
+		todo.setStatus(false); // false = Unerledigt
 
 		todoList.add(todo);
 
@@ -132,9 +126,9 @@ public class TodoManager {
 	}
 
 	private void todoListPrint() {
-
+		System.out.println();
 		if (todoList != null) {
-			System.out.println("\n\n[Benutzer: " + benutzerName.toUpperCase() + "]");
+//			System.out.println("\n\n[Benutzer: " + benutzerName.toUpperCase() + "]");
 
 			StringBuilder output = new StringBuilder();
 			DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
@@ -178,9 +172,9 @@ public class TodoManager {
 			if (todoList != null)
 				saveToFile();
 			else
-				todoList = new TreeSet<>();
+				// todoList = new TreeSet<>();
 
-			menu();
+				menu();
 		}
 	}
 
@@ -207,8 +201,15 @@ public class TodoManager {
 	}
 
 	private void todoBearbeiten() {
-		System.out.println("Geben Sie ID Nummer von Todo: ");
-		int idNum = scanner.nextInt();
+		System.out.print("Geben Sie ID Nummer von Todo: ");
+		int idNum = -1;
+		try {
+			scanner.nextLine();
+			idNum = scanner.nextInt();
+		} catch (Exception e) {
+			// e.printStackTrace();
+		}
+
 		if (idNum >= 1 && idNum <= counter) {
 			for (Todo t : todoList) {
 				if (t.getId() == idNum) {
@@ -218,15 +219,16 @@ public class TodoManager {
 						t.setStatus(true);
 				}
 			}
-			System.out.println();
+
+			saveToFile();
+			todoListPrint();
 
 		} else {
 			System.out.println("Ungultige ID Nummer!");
 			todoBearbeiten();
+
 		}
 
-		saveToFile();
-		todoListPrint();
 	}
 
 //	public void neuenBenutzer() {
