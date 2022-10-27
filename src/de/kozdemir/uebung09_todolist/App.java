@@ -5,7 +5,8 @@ public class App {
 	public static void main(String[] args) {		
 		
 //		TodoManager tm = new TodoManager("Hasan Murat");
-		TodoManager tm = new TodoManager();
+		TodoManager todoManager = new TodoManager();
+		
 	}
 
 }

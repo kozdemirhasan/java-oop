@@ -12,9 +12,10 @@ public class Beutel {
 	public boolean fuellen(int dreck) {
 		if (dreck + dreckImBeutel > MAX_CAPACITY) {
 			return true;
+		} else {
+			dreckImBeutel += dreck;
+			return false;
 		}
-		dreckImBeutel += dreck;
-		return false;
 
 	}
 
@@ -23,5 +24,11 @@ public class Beutel {
 		return dreckImBeutel;
 
 	}
+
+	public int getMAX_CAPACITY() {
+		return MAX_CAPACITY;
+	}
+	
+	
 
 }

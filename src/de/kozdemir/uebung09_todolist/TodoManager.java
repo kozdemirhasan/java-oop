@@ -51,7 +51,7 @@ public class TodoManager {
 			wahl = scanner.nextInt();
 		} catch (Exception e) {
 			scanner.nextLine();
-			System.out.println("ungültige auswahl!");
+			System.out.println("ungültige auswahl!!");
 
 			menu();
 
@@ -71,7 +71,8 @@ public class TodoManager {
 
 				break;
 			case 4:
-				System.out.println("derzeit im Bau...");
+				System.out.println("wir arbeiten daran...");
+				menu();
 				break;
 
 			case 5:
@@ -156,7 +157,7 @@ public class TodoManager {
 
 	}
 
-	private void readFromFile() {
+	public void readFromFile() {
 
 		try {
 			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(FILE_NAME)));

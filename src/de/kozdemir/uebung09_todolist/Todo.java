@@ -6,9 +6,10 @@ import java.time.LocalDateTime;
 public class Todo implements Serializable , Comparable<Todo>{
 	
 	
+	private static final long serialVersionUID = 1L;
+	
 	private int id;
 	private String titel;
-
 	private LocalDateTime erzeugungsDate;
 	private boolean status;
 	
@@ -46,7 +47,7 @@ public class Todo implements Serializable , Comparable<Todo>{
 		this.status = status;
 	}
 	
-	
+	//nicht nötig für diese App
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
