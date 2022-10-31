@@ -3,23 +3,25 @@ package de.kozdemir.uebung09_todolist;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
-public class Todo implements Serializable , Comparable<Todo>{
+public class Todo implements Serializable{
 	
-	
+
+	/**
+	 * 
+	 */
 	private static final long serialVersionUID = 1L;
-	
-	private int id;
+	private Integer id=0;
 	private String titel;
 	private LocalDateTime erzeugungsDate;
-	private boolean status;
+	private Boolean status;
 	
 		
 //	getter and setter methode	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -39,11 +41,11 @@ public class Todo implements Serializable , Comparable<Todo>{
 		this.erzeugungsDate = erzeugungsDate;
 	}
 
-	public boolean isStatus() {
+	public Boolean isStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(Boolean status) {
 		this.status = status;
 	}
 	
@@ -56,17 +58,4 @@ public class Todo implements Serializable , Comparable<Todo>{
 		return builder.toString();
 	}
 
-//	//Sortierung - Erzeugsdatum
-//	@Override
-//	public int compareTo(Todo o) {		
-//		return titel.compareTo(o.getTitel());
-//	}
-	
-	
-	//Sortierung - Date
-		@Override
-		public int compareTo(Todo o) {		
-//			return erzeugungsDate.compareTo(o.getErzeugungsDate());
-			return o.getErzeugungsDate().compareTo(erzeugungsDate);
-		}
 }

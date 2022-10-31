@@ -18,8 +18,9 @@ public class App {
 			System.out.println("Stand: " + sauger.getBeutelInhalt());
 			sauger.saugen(22);
 			System.out.println("Stand: " + sauger.getBeutelInhalt());
-			sauger.saugen(20);
+			sauger.saugen(70);
 			System.out.println("Stand: " + sauger.getBeutelInhalt());
+	
 		} catch (BeutelVollException e) {
 			System.out.println("Der Beutel ist voll: " + sauger.getBeutelInhalt() );
 		

@@ -8,26 +8,23 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
 import java.util.Scanner;
-import java.util.Set;
-import java.util.TreeSet;
+
 
 public class TodoManager {
 
-	private int counter;
-	private String benutzerName = "";
-	private Set<Todo> todoList;
+	private Integer counter=0;
+	private List<Todo> todoList;
 	private final String FILE_NAME = "data.ser";
 	private Todo todo;
 
 	private final Scanner scanner = new Scanner(System.in);
 
-//	public TodoManager(String benutzerName) {
-//		this.benutzerName = benutzerName;
-//
-//		readFromFile();
-//
-//	}
 	public TodoManager() {
 		readFromFile();
 
@@ -91,7 +88,7 @@ public class TodoManager {
 	private void neueAufgabe() {
 
 		if (todoList == null) {
-			todoList = new TreeSet<>();
+			todoList = new ArrayList<>();
 		}
 
 		todo = new Todo();
@@ -115,22 +112,24 @@ public class TodoManager {
 
 		LocalDateTime erzeugungsDatum = LocalDateTime.now();
 		todo.setErzeugungsDate(erzeugungsDatum);
-
 		todo.setStatus(false); // false = Unerledigt
 
 		todoList.add(todo);
-
+		
+		//Sortierung
+		doSortierung();
+		
 		saveToFile();
 		todoListPrint();
 		menu();
 
 	}
 
+
+
 	private void todoListPrint() {
 		System.out.println();
 		if (todoList != null) {
-//			System.out.println("\n\n[Benutzer: " + benutzerName.toUpperCase() + "]");
-
 			StringBuilder output = new StringBuilder();
 			DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
 
@@ -139,6 +138,10 @@ public class TodoManager {
 					"--------------------------------------------------------------------------------------------------"));
 
 			for (Todo t : todoList) {
+				
+//				??? Ternärer operator ????
+//				todoList.forEach(x ->  {s. == true ?  "Erledigt": "Unerledigt"});				
+				
 				String status = "Unerledigt";
 				if (t.isStatus())
 					status = "Erledigt";
@@ -147,23 +150,23 @@ public class TodoManager {
 						t.getErzeugungsDate().format(myFormatObj), /* t.isStatus() */ status));
 			}
 			System.out.println(output);
-
-			menu();
-
 		} else {
-			System.out.println("Todolist ist leer!\n");
-			menu();
+			System.out.println("Todolist ist leer!\n");		
 		}
+		menu();
 
 	}
 
 	public void readFromFile() {
 
 		try {
-			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(FILE_NAME)));
-			todoList = (Set<Todo>) in.readObject();
+			// InputStream lesen von Bytes
+			ObjectInputStream in = new ObjectInputStream(new BufferedInputStream(new FileInputStream(FILE_NAME)));			
+//			ObjectInputStream in = new ObjectInputStream(new FileInputStream(FILE_NAME));			
+			todoList = (List<Todo>) in.readObject();
 			letzteIDFind();
 			todoListPrint();
+			in.close();
 			menu();
 
 		} catch (Exception e) {
@@ -173,7 +176,6 @@ public class TodoManager {
 			if (todoList != null)
 				saveToFile();
 			else
-				// todoList = new TreeSet<>();
 
 				menu();
 		}
@@ -182,6 +184,7 @@ public class TodoManager {
 	private void saveToFile() {
 		try {
 			ObjectOutputStream out = new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(FILE_NAME)));
+//			ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(FILE_NAME));
 			out.writeObject(todoList);
 			out.flush();
 			out.close();
@@ -197,7 +200,6 @@ public class TodoManager {
 
 			}
 		}
-		saveToFile();
 
 	}
 
@@ -220,7 +222,8 @@ public class TodoManager {
 						t.setStatus(true);
 				}
 			}
-
+			
+			doSortierung();
 			saveToFile();
 			todoListPrint();
 
@@ -232,11 +235,39 @@ public class TodoManager {
 
 	}
 
-//	public void neuenBenutzer() {
+	private void doSortierung() {
+		
+//		Collections.sort(todoList, new TodoTitleComparator());
+//		Collections.sort(todoList, new TodoErzeugungsDateComparator());
+	
+		Comparator<Todo> operatorTitel = (o1, o2) -> o1.getTitel().compareTo(o2.getTitel());
+		Comparator<Todo> operatorDate = (o1, o2) -> o2.getErzeugungsDate().compareTo(o1.getErzeugungsDate());
+		Comparator<Todo> operatorStaus = (o1, o2) -> o1.isStatus().compareTo(o2.isStatus());
+		
+		Collections.sort(todoList, operatorStaus); //erste Status
+		Collections.sort(todoList, operatorTitel); //dann title
+		Collections.sort(todoList, operatorDate); //dann Date sortiert
+		
+	}
+	
+	
+//	//mit Erzeugungsdate sortiert
+//	class TodoErzeugungsDateComparator implements Comparator<Todo> {
 //
-//		System.out.print("Geben Sie Benutzername: ");
-//		String benutzerName = scanner.nextLine();
-//		TodoManager tm1 = new TodoManager(benutzerName);
+//		@Override
+//		public int compare(Todo t1, Todo t2) {
+////			return t1.getErzeugungsDate().compareTo(t2.getErzeugungsDate());
+//			return t2.getErzeugungsDate().compareTo(t1.getErzeugungsDate());
+//		}
+//	}
+//
+//	//mit Title sortiert
+//	class TodoTitleComparator implements Comparator<Todo> {
+//
+//		@Override
+//		public int compare(Todo t1, Todo t2) {
+//			return t1.getTitel().compareTo(t2.getTitel());
+//		}
 //	}
 
 }
