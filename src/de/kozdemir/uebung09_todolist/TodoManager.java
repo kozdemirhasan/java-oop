@@ -216,10 +216,10 @@ public class TodoManager {
 		if (idNum >= 1 && idNum <= counter) {
 			for (Todo t : todoList) {
 				if (t.getId() == idNum) {
-					if (t.isStatus() == true)
-						t.setStatus(false);
-					else
+					if (t.isStatus() == false)
 						t.setStatus(true);
+					else
+						System.out.println(t.getTitel()+ " wurde schon erledigt!");
 				}
 			}
 			
