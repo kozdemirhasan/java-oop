@@ -1,9 +1,0 @@
-/**
- * 
- */
-/**
- * @author hasan
- *
- */
-module javaOOP {
-}
