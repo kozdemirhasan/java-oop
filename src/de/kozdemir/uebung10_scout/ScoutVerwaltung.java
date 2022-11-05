@@ -32,6 +32,7 @@ public class ScoutVerwaltung {
 		Scout s4 = new Scout("Natasha", "Romanov", LocalDate.of(1998, 1, 2), 165);
 		Scout s5 = new Scout("Steve", "Taylor", LocalDate.of(1987, 5, 9), 179);
 		Scout s7 = new Scout("Bruce", "Banner", LocalDate.of(1982, 12, 1), 200);
+		Scout s8 = new Scout("Carol", "Danvers", LocalDate.of(2006, 10, 2), 195);
 		sm.addScout(s1);
 		sm.addScout(s2);
 		sm.addScout(s3);
@@ -39,8 +40,10 @@ public class ScoutVerwaltung {
 		sm.addScout(s5);
 		sm.addScout(s6);
 		sm.addScout(s7);
+		sm.addScout(s8);
 
 		System.out.println();
+		
 
 //		Erweiterung-2
 		sm.sortierung(); // Vorname dann Nachname dann Gebustdatum dannach Größe
