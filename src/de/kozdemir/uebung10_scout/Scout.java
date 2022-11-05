@@ -5,25 +5,23 @@ import java.time.LocalDate;
 public class Scout /*implements Comparable<Scout>*/ {
 
 	private String firstName;
-
 	private String lastName;
-
-	private LocalDate birthDate;
+	private LocalDate birthDate;	
+	private Integer height;
 	
 	
-
 	public Scout() {
 		
 	}
 
-	public Scout(String firstName, String lastName, LocalDate birthDate, int height) {
+	public Scout(String firstName, String lastName, LocalDate birthDate, Integer height) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.birthDate = birthDate;
 		this.height = height;
 	}
 
-	private int height;
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -49,11 +47,11 @@ public class Scout /*implements Comparable<Scout>*/ {
 		this.birthDate = birthDate;
 	}
 
-	public int getHeight() {
+	public Integer getHeight() {
 		return height;
 	}
 
-	public void setHeight(int height) {
+	public void setHeight(Integer height) {
 		this.height = height;
 	}
 	
