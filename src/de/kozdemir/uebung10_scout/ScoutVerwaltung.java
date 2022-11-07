@@ -28,9 +28,10 @@ public class ScoutVerwaltung {
 		Scout s1 = new Scout("Peter", "Parker", LocalDate.of(1998, 5, 15), 202);
 		Scout s2 = new Scout("Carol", "Danvers", LocalDate.of(2000, 7, 2), 177);
 		Scout s3 = new Scout("Bruce", "Banner", LocalDate.of(1982, 12, 1), 200);
-		Scout s6 = new Scout("Natasha", "Romanov", LocalDate.of(1998, 1, 2), 175);
-		Scout s4 = new Scout("Natasha", "Romanov", LocalDate.of(1998, 1, 2), 165);
+		Scout s4 = new Scout("Natasha", "Romanov", LocalDate.of(1998, 1, 2), 175);
 		Scout s5 = new Scout("Steve", "Taylor", LocalDate.of(1987, 5, 9), 179);
+		
+		Scout s6 = new Scout("Natasha", "Romanov", LocalDate.of(1998, 1, 2), 165);
 		Scout s7 = new Scout("Bruce", "Banner", LocalDate.of(1982, 12, 1), 200);
 		Scout s8 = new Scout("Carol", "Danvers", LocalDate.of(2006, 10, 2), 195);
 		sm.addScout(s1);
