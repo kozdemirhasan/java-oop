@@ -22,9 +22,6 @@ public class Mitglied {
 				.append(mitgliedAlte).append("]");
 		return builder.toString();
 	}
-	
-	
-	
-	
+		
 
 }
