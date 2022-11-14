@@ -54,7 +54,7 @@ public class ScoutVerwaltung {
 	}
 
 	public void sortierung() {
-		 <Scout> sortFirstName = (scout1, scout2) -> scout1.getFirstName().compareTo(scout2.getFirstName());
+		Comparator <Scout> sortFirstName = (scout1, scout2) -> scout1.getFirstName().compareTo(scout2.getFirstName());
 		Comparator<Scout> sortLastName = (scout1, scout2) -> scout1.getLastName().compareTo(scout2.getLastName());
 		Comparator<Scout> sortGeburstag = (scout1, scout2) -> scout1.getBirthDate().compareTo(scout2.getBirthDate());
 		Comparator<Scout> sortGroesse = (scout1, scout2) -> scout1.getHeight().compareTo(scout2.getHeight());
