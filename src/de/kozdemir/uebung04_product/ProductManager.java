@@ -11,6 +11,8 @@ public class ProductManager {
 		products = new ArrayList<>();
 	}
 
+	
+	
 	public void addProduct(Product product) {
 		products.add(product);
 
@@ -32,5 +34,6 @@ public class ProductManager {
 		}
 
 	}
-
+	
+	
 }

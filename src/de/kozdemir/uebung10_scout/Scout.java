@@ -2,7 +2,7 @@ package de.kozdemir.uebung10_scout;
 
 import java.time.LocalDate;
 
-public class Scout /*implements Comparable<Scout>*/ {
+public class Scout implements Comparable<Scout> {
 
 	private String firstName;
 	private String lastName;
@@ -53,6 +53,12 @@ public class Scout /*implements Comparable<Scout>*/ {
 
 	public void setHeight(Integer height) {
 		this.height = height;
+	}
+
+	@Override
+	public int compareTo(Scout o) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 	
 
