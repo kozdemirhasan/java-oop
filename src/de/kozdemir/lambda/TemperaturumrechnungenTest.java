@@ -32,3 +32,4 @@ public class TemperaturumrechnungenTest {
 interface Temperaturumrechnungen {
 	public double konvertieren(double d);
 }
+
