@@ -24,9 +24,9 @@ public class TodoManager {
 
 	private final Scanner scanner = new Scanner(System.in);
 
-	public TodoManager() {
+	
+	public void run() {
 		readFromFile();
-
 	}
 
 	private void menu() {
@@ -156,7 +156,7 @@ public class TodoManager {
 
 	}
 
-	public void readFromFile() {
+	private void readFromFile() {
 
 		try {
 			// InputStream lesen von Bytes

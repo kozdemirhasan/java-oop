@@ -15,16 +15,32 @@ public class DatabaseTest {
 		UserRepository repo = new UserRepository();
 		try {
 
+////			insert (mit save methode)
+//			repo.save(new User("Mutlu","Ak"));
+
+////			update (mit save methode)
+//			User u2 = new User(6, "Hamza", "Varol"); //old: 6-osman demir
+//			User old = repo.findById(u2.getId());
+//			if (repo.save(u2)) {				
+//				System.out.println(old.getId() + " " + old.getFirstname() + " " + old.getLastname() + " replaced with "
+//						+ u2.getId() + " " + u2.getFirstname() + " " + u2.getLastname());
+//			}
+
+////			delete
+//			if(repo.delete(10)) {
+//				System.out.println("deleted");
+//			}
+
+//			// Einen abfragen
+//			User u = repo.findById(7);
+//			System.out.println(u.getFirstname() + " " + u.getLastname());
+
 			// Alle abfragen
 			List<User> users = repo.find();
 			final String ROW = "%10s | %-10s | %-10s \n";
 			for (User u : users) {
 				System.out.printf(ROW, u.getId() , u.getFirstname() , " " + u.getLastname());
 			}
-//			
-//			// Einen abfragen
-//			User u = repo.findById(1);
-//			System.out.println(u.getFirstname() + " " + u.getLastname());
 
 		} catch (UnsupportedOperationException e) {
 			System.out.println("Funktion ist noch nicht eingebaut.");
@@ -33,7 +49,7 @@ public class DatabaseTest {
 		}
 
 		System.exit(0);
-		
+
 		/*********************************************************************************************/
 
 		try (Connection con = DriverManager.getConnection(URL); Statement stmt = con.createStatement()) {

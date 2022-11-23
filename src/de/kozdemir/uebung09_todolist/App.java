@@ -4,7 +4,8 @@ public class App {
 	
 	public static void main(String[] args) {		
 		
-		TodoManager todoManager = new TodoManager();	
+		TodoManager tm = new TodoManager();	
+		tm.run();
 
 		
 	}
