@@ -45,7 +45,7 @@ public class Krokodoc {
 		for (int i = 0; i < numberOfplayers; i++) {
 			System.out.print((i + 1) + ". player name: ");
 			String playerName = scan.next();
-			spielers[i] = new Spieler(playerName);
+			spielers[i] = new Spieler(playerName.toUpperCase());
 		}
 		System.out.println();
 
