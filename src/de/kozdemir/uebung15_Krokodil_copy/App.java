@@ -1,4 +1,4 @@
-package de.kozdemir.uebung15;
+package de.kozdemir.uebung15_Krokodil_copy;
 
 public class App {
 

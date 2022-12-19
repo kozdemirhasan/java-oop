@@ -1,4 +1,4 @@
-package de.kozdemir.uebung15;
+package de.kozdemir.uebung15_Krokodil_copy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,7 +59,7 @@ public class Krokodoc {
 		schaetzens = new ArrayList<>();		
 	
 		while (true) {
-
+try {
 			for (int i = 0; i < spielers.length; i++) {
 				System.out.print(spielers[i].spilerName + " :");
 				int s = scan.nextInt();
@@ -71,9 +71,10 @@ public class Krokodoc {
 						System.exit(0);
 					} else {
 						if(controll(s) ) {
-							System.out.println(s+ ". Zahn wurde vorher gezogen\n");
+							System.out.println(s+ ". Zahn bereit gezogen\n");
 							--i;
 						}else {
+							System.out.println("Super. " + s + ". Zahn wurde gezogen");
 							schaetzens.add(s);
 							entfernt(s - 1);
 							printZaehne();
@@ -84,6 +85,11 @@ public class Krokodoc {
 					--i;
 				}
 			}
+}
+		catch(InputMismatchException e) {
+			
+		}
+			
 		}
 
 	}
