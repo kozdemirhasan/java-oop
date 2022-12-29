@@ -59,9 +59,9 @@ public class Krokodoc {
 		schaetzens = new ArrayList<>();		
 	
 		while (true) {
-try {
+
 			for (int i = 0; i < spielers.length; i++) {
-				System.out.print(spielers[i].spilerName + " :");
+				System.out.print("Dr. "+ spielers[i].spilerName + " :");
 				int s = scan.nextInt();
 				
 				if (s > 0 && s < 33) {
@@ -85,10 +85,7 @@ try {
 					--i;
 				}
 			}
-}
-		catch(InputMismatchException e) {
-			
-		}
+
 			
 		}
 
@@ -105,7 +102,7 @@ try {
 	public void printZaehne() {
 		System.out.print("Zähne: ");
 		for (String str : zaehne)
-			System.out.printf("[%2s]  ", str);
+			System.out.printf("[%s] ", str);
 		
 		System.out.println("\n");
 	}

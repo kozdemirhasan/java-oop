@@ -1,4 +1,4 @@
-package de.kozdemir.patterns.builder;
+package de.kozdemir.patterns.creational.builder;
 
 public class BuilderTest {
 
