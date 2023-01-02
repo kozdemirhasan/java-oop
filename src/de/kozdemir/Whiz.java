@@ -6,6 +6,10 @@ import static java.lang.Math.*;
 public class Whiz {
 
 	public static void main(String[] args) {
+		
+		int i = Runtime.getRuntime().availableProcessors();
+	
+		System.out.println(i);
 
 		 int s = 2;
 		 final int x=3;
