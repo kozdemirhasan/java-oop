@@ -1,33 +1,18 @@
 package de.kozdemir.uebung17;
 
-import java.awt.Point;
-
 public class Person implements Runnable {
-	Point p;
 
 	private String name;
-	private int posX;
-	private int posY;
-	private int zielPosX;
-	private int zielPosY;
+	private int curX;
+	private int curY;
+	private int targetX;
+	private int targetY;
+	private boolean wait = true;
 
-	public Person(String name, int posX, int posY) {
+	public Person(String name, int x, int y) {
 		this.name = name;
-		this.posX = posX;
-		this.posY = posY;
-	}
-
-	public void neuesZiel(int x, int y) {
-		this.zielPosX = x;
-		this.zielPosY = y;
-	}
-
-	public int getZielPosX() {
-		return zielPosX;
-	}
-
-	public int getZielPosY() {
-		return zielPosY;
+		this.curX = x;
+		this.curY = y;
 	}
 
 	public String getName() {
@@ -38,38 +23,75 @@ public class Person implements Runnable {
 		this.name = name;
 	}
 
-	public int getPosX() {
-		return posX;
+	public int getCurX() {
+		return curX;
 	}
 
-	public void setPosX(int posX) {
-		this.posX = posX;
+	public void setCurX(int curX) {
+		this.curX = curX;
 	}
 
-	public int getPosY() {
-		return posY;
+	public int getCurY() {
+		return curY;
 	}
 
-	public void setPosY(int posY) {
-		this.posY = posY;
+	public void setCurY(int curY) {
+		this.curY = curY;
 	}
 
-	@Override
-	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Person [name=").append(name).append(", posX=").append(posX).append(", posY=").append(posY)
-				.append("]");
-		return builder.toString();
+	public int getTargetX() {
+		return targetX;
+	}
+
+	public int getTargetY() {
+		return targetY;
+	}
+
+	public void setTarget(int targetX, int targetY) {
+		this.targetX = targetX;
+		this.targetY = targetY;
 	}
 
 	@Override
 	public void run() {
-		// TODO Auto-generated method stub
-		
+		Thread t = Thread.currentThread();
+
+		while (true) {
+			if (t.isInterrupted())
+				break;
+
+			if (!move()) {
+				System.out.println(name + ": pos [X=" + curX + " , Y=" + curY + "]");
+			}else {
+				System.out.println(name.toUpperCase() + ": ziel erreicht und wartet");
+			}
+
+			try {
+				Thread.sleep(1000);
+
+			} catch (InterruptedException e) {
+				t.interrupt();
+			}
+		}
+
 	}
-	
+
 	public boolean move() {
-		
+
+		if (curX < targetX)
+			curX++;
+
+		if (curX > targetX)
+			curX--;
+
+		if (curY < targetY)
+			curY++;
+
+		if (curY > targetY)
+			curY--;
+
+		return ((curX == targetX) && (curY == targetY));
+
 	}
 
 }
