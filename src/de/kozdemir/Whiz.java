@@ -1,23 +1,18 @@
 package de.kozdemir;
 
-import java.util.*;
-import static java.lang.Math.*;
+import java.time.LocalDate;
+
 
 public class Whiz {
 
+	
 	public static void main(String[] args) {
 
-		 int s = 2;
-		 final int x=3;
-		switch(s) {
+		LocalDate lc = LocalDate.of(2015, 1, 31).now();
+		lc =lc.plusYears(3);
+		System.out.println(lc);
 		
-		case 1: System.out.println("A"); break;
-		case x-1: System.out.println("B");
-		case x: System.out.println("C"); break;
-		case x+1: System.out.println("D"); break;
-		default: System.out.println("F");
-			
-		}
+		System.out.println(LocalDate.ofYearDay(2015,365));
 		
 	}
 }
