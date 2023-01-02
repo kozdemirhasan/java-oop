@@ -7,6 +7,10 @@ public class Whiz {
 
 	
 	public static void main(String[] args) {
+		
+		int i = Runtime.getRuntime().availableProcessors();
+	
+		System.out.println(i);
 
 		LocalDate lc = LocalDate.of(2015, 1, 31).now();
 		lc =lc.plusYears(3);
