@@ -50,6 +50,7 @@ public class Person implements Runnable {
 	public void setTarget(int targetX, int targetY) {
 		this.targetX = targetX;
 		this.targetY = targetY;
+		wait = false;
 	}
 
 	@Override
@@ -60,13 +61,19 @@ public class Person implements Runnable {
 			if (t.isInterrupted())
 				break;
 
-			if (!move()) {
-				System.out.println(name + ": pos [X=" + curX + " , Y=" + curY + "]");
-			}else {
-				System.out.println(name.toUpperCase() + ": ziel erreicht und wartet");
-			}
-
 			try {
+				wait = move();
+				if (!wait) {
+					System.out.println(name + ": pos [X=" + curX + " , Y=" + curY + "]");
+				} else {
+					System.out.println(name.toUpperCase() + ": ziel erreicht und wartet");
+
+					synchronized (this) {
+						wait();			
+//						notifyAll();
+					}					
+				}
+
 				Thread.sleep(1000);
 
 			} catch (InterruptedException e) {
