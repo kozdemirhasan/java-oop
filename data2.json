@@ -1,0 +1,30 @@
+[
+	{
+		"vorname": "Peter",
+		"nachname": "Parker",
+		"stadt": [
+			"Berlin",
+			"Kiel"
+		],
+		"alter": 33,
+		"raucher": false
+	},
+	{
+		"vorname": "Hans",
+		"nachname": "Baner",
+		"stadt": [
+			"Kiel"
+		],
+		"alter": 52,
+		"raucher": true
+	},
+	{
+		"vorname": "Steve",
+		"nachname": "Parker",
+		"stadt": [
+			"Berlin"
+		],
+		"alter": 31,
+		"raucher": false
+	}
+]

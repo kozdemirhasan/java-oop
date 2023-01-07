@@ -1,0 +1,11 @@
+{
+	"vorname": "Peter",
+	"nachname": "Parker",
+	"stadt": [
+		"Hamburg",
+		"New York",
+		"Heide"
+	],
+	"alter": 25,
+	"raucher": false
+}
