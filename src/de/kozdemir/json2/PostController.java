@@ -8,13 +8,14 @@ public class PostController {
 	private List<Post> cache;
 	private LocalDateTime cacheTime;
 	
+	
 	public void getAll() throws Exception {
 		String json = Utils.requestJson("posts");
 		cache = Utils.computeAll(json, Post[].class);
-		cacheTime = LocalDateTime.now();
+		cacheTime = LocalDateTime.now(); 
 		System.out.println(cache);
 	}
-	
+		
 	
 //public void computeOnePostJson(String json) {
 //	Post post = gson.fromJson(json, Post.class);

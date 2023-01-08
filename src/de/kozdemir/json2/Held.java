@@ -24,7 +24,7 @@ public class Held {
 	
 	public Held(int id, String vorname, String nachname, String[] stadt, int alter, boolean raucher) {
 		this(vorname, nachname, stadt, alter, raucher);
-		this.id = id;
+		this.id = id; 
 	}
 	
 	public int getId() {

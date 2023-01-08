@@ -1,6 +1,5 @@
 package de.kozdemir.json2;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -13,7 +12,7 @@ import com.google.gson.Gson;
 
 public class Utils {
 	
-	private static final String URL = "https://my-json-server.typicode.com/itomski/jsonserv";
+	private static final String URL = "https://my-json-server.typicode.com/kozdemirhasan/jsonserv";
 	
 	private static final Gson gson = new Gson();
 
